@@ -1,0 +1,36 @@
+.logo {
+    align-items: center;
+    display: flex;
+  }
+  
+  .logo img {
+    width: 48px;
+    border-radius: 50%;
+  }
+
+  .header-line{
+    border: 0;
+    border-bottom: 1px solid #e8e8e8;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .header-line .ant-menu-horizontal {
+    border: 0 !important;
+  }
+  
+  .footer {
+    text-align: center;
+  }
+
+  
+
+
+
+
+
+
+
+
+  
+  
