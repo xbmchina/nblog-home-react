@@ -8,9 +8,10 @@ export default class PCBlogContent extends React.Component {
 			<div>
 				<Row>
 					<Col span={2}></Col>
-					<Col span={20}>
+					<Col span={14}>
                        <PCArticleList count={20} type="top" />
 					</Col>
+					<Col span={6}></Col>
 					<Col span={2}></Col>
 				</Row>
 			</div>
