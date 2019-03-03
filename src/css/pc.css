@@ -214,3 +214,20 @@ img {
 .blogerinfo-contact > a {
   padding: 0 10px;
 }
+
+
+
+
+/* 右侧文章推荐栏 */
+.blog-module {
+  margin: 15px 0px 15px 15px;
+  padding: 5px;
+  background: #fff;
+}
+
+.blog-module-item {
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  padding: 5px 5px 0px 0px;
+}
