@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col,BackTop } from 'antd';
 import PCBlogHeader from './pc_blog_header';
 import PCBlogFooter from './pc_blog_footer';
+import PCArticleBlock from './pc_article_block';
 
 export default class PCArticleDetail extends React.Component {
 
@@ -39,12 +40,14 @@ export default class PCArticleDetail extends React.Component {
                 <Row>
                     <Col span={2}></Col>
                     <Col span={14} className="container">
-                        <div class="articleContainer" dangerouslySetInnerHTML={this.createMarkup()}></div>
+                        <div class="articleContainer shadow" dangerouslySetInnerHTML={this.createMarkup()}></div>
                         <hr/>
 						{/* <CommonComments uniquekey={this.props.match.params.uniquekey}/> */}
                     </Col>
                     <Col span={6}>
                     {/* <PCNewsImageBlock count={40} type="top" width="100%" cardTitle="相关新闻" imageWidth="150px"/> */}
+                    <PCArticleBlock  count={8} type="top" width="100%" bordered="false" title="相关专栏"/>
+                    <PCArticleBlock  count={8} type="yule" width="100%" bordered="false" title="相似文章"/>
                     </Col>
                     <Col span={2}></Col>
                 </Row>

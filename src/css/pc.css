@@ -1,3 +1,13 @@
+.container{
+  padding-top: 16px; 
+}
+a,a:link,a:visited,a:hover,a:active  {
+  cursor: pointer;
+  color: #333;
+  text-decoration: none;
+  background-color: transparent;
+}
+
 .logo {
     align-items: center;
     display: flex;
@@ -237,4 +247,66 @@ img {
   overflow:hidden;
   text-overflow:ellipsis;
   padding: 5px 5px 0px 0px;
+}
+
+
+
+/* 留言板 */
+.aboutinfo {
+  text-align: center;
+  padding: 0 15px;
+}
+
+.aboutinfo-nickname {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 15px 0;
+}
+
+.aboutinfo-introduce {
+  margin: 20px auto;
+  font-size: 18px;
+  width: 90%;
+}
+
+.aboutinfo-location {
+  color: #808080;
+  margin: 15px;
+  font-size: 18px;
+}
+
+.aboutinfo-contact {
+  margin: 15px;
+}
+
+.aboutinfo-contact p {
+  font-size:2em;
+}
+
+.aboutinfo-figure {
+  display: inline-block;
+  margin: 20px auto;
+}
+
+.aboutinfo-figure img {
+  border-radius: 50%;
+  max-height: 86px;
+}
+
+.aboutinfo-abstract > h1 {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: left;
+  margin-top: 25px;
+}
+
+.aboutinfo-abstract > p {
+  margin: 5px 0;
+  font-size: 14px;
+  text-align: left;
+  text-indent: 2em;
+}
+
+.aboutinfo-abstract .end-tab {
+  text-align: center;
 }

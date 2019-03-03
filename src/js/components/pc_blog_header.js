@@ -15,6 +15,7 @@ import {
     Modal
 } from 'antd';
 
+import { Link } from "react-router-dom";
 
 export default class PCBlogHeader extends React.Component {
 
@@ -47,19 +48,29 @@ export default class PCBlogHeader extends React.Component {
                         <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
 
                             <Menu.Item key="home">
-                                <Icon type="home" />首页
+                                <Link to='/'>
+                                    <Icon type="home" />首页
+                                </Link>
                             </Menu.Item>
                             <Menu.Item key="special">
-                                <Icon type="book" />专栏
+                                <Link to='/album'>
+                                    <Icon type="book" />专栏
+                                </Link>
                             </Menu.Item>
                             <Menu.Item key="history">
-                                <Icon type="camera" />历程
+                                <Link to='/timeline'>
+                                    <Icon type="camera" />历程
+                                </Link>
                             </Menu.Item>
                             <Menu.Item key="message">
-                                <Icon type="message" />留言
+                                <Link to='/message'>
+                                    <Icon type="message" />留言
+                                </Link>
                             </Menu.Item>
                             <Menu.Item key="about">
-                                <Icon type="user" />关于我
+                                <Link to='/about'>
+                                    <Icon type="user" />关于我
+                                </Link>
                             </Menu.Item>
                         </Menu>
                     </Col>

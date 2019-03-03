@@ -4,7 +4,7 @@ export default class PCBlogFooter extends React.Component {
 
 	render() {
 		return (
-			<footer>
+			<footer class="foot">
 				<Row>
 					<Col span={2}></Col>
 					<Col span={20} class="footer">
