@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoIcon from '../../images/logo.jpg';
+import AvatarIcon from '../../images/avatar.jpg';
 import { Icon } from 'antd';
 
 
@@ -9,7 +9,7 @@ export default class PCBlogAbout extends React.Component {
         return (
             <div class="blogerinfo shadow">
                 <div class="blogerinfo-figure">
-                    <img src={LogoIcon} alt="XbmChina" />
+                    <img src={AvatarIcon} alt="XbmChina" />
                 </div>
                 <p class="blogerinfo-nickname">XbmChina</p>
                 <p class="blogerinfo-introduce">微信公众号：【 n平方 】 </p>

@@ -25,6 +25,7 @@ export default class PCBlogHeader extends React.Component {
                     <Col span={4}>
                         <a href="/" class="logo">
                             <img src={LogoIcon} alt="logo" />
+                            {/* <span>XbmChina</span> */}
                         </a>
                     </Col>
                     <Col span={10}>

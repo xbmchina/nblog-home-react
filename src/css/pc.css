@@ -8,6 +8,13 @@
     border-radius: 50%;
   }
 
+  .logo span {
+    font-size: 30px;
+    color: black;
+    font-weight: bold;
+    font-family: KaiTi;
+    display: inline-block;
+  }
   .header-line{
     border: 0;
     border-bottom: 1px solid #e8e8e8;
