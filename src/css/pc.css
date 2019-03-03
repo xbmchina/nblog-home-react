@@ -79,7 +79,7 @@ img {
   position: relative;
     width: 100%;
     margin: 0 0 15px;
-    padding: 15px 2px 20px 0;
+    padding: 15px 2px 20px 20px;
     border-bottom: 1px solid #f0f0f0;
     word-wrap: break-word;
     line-height: 20px;
@@ -134,6 +134,83 @@ img {
 }
 
 
+/* 通知栏 */
+.home-tips {
+  padding: 10px 10px;
+  background: #fff;
+  font-size: 13px;
+  /* margin-bottom: 15px; */
+}
+.shadow {
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
+}
+.home-tips > i {
+  color: #009688;
+  font-size: 15px;
+  float: left;
+  line-height: 17px;
+}
 
-  
-  
+.home-tips > .home-tips-container {
+  margin-left: 20px;
+  height: 17px;
+  overflow: hidden;
+}
+.home-tips > span {
+  display: none;
+}
+.home-tips .tip-this {
+  display: block;
+  color: #009688;
+}
+
+
+/* 个人简介 */
+
+.blogerinfo {
+  text-align: center;
+  padding: 0px 15px;
+  background: #fff;
+  margin: 15px 0px 15px 15px;
+}
+
+
+.blogerinfo-figure {
+  display: inline-block;
+  margin: 20px auto;
+}
+img {
+  display: inline-block;
+  border: none;
+}
+
+.blogerinfo-figure img {
+  border-radius: 50%;
+  max-height: 86px;
+}
+
+.blogerinfo-nickname {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 15px 0;
+}
+
+.blogerinfo-introduce {
+  margin: 15px auto;
+  font-size: 18px;
+  width: 90%;
+}
+
+.blogerinfo-location {
+  color: #808080;
+  margin: 15px;
+}
+
+.blogerinfo-contact {
+  padding: 15px;
+  padding-top: 5px;
+}
+
+.blogerinfo-contact > a {
+  padding: 0 10px;
+}

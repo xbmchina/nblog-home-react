@@ -18,7 +18,7 @@ export default class PCArticleList extends React.Component {
         const { news } = this.state;
         const newsList = news.length
             ? news.map((newsItem, index) => (
-                <section key={index} class="article-item have-img">
+                <section key={index} class="article-item have-img shadow">
                     <a class="wrap-img" href="/p/86207ea765b2" target="_blank">
                         <img class="img-blur-done" src="//upload-images.jianshu.io/upload_images/13150128-a65b8a3f64ed4a25.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240" alt="120" />
                     </a>
