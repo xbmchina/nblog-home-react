@@ -8,7 +8,9 @@ export default class PCBlogIndex extends React.Component {
 		return (
 			<div>
 				<PCBlogHeader></PCBlogHeader>
+
 				<PCBlogContent></PCBlogContent>
+				
 				<PCBlogFooter></PCBlogFooter>
 			</div>
 		);

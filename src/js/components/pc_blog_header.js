@@ -17,6 +17,21 @@ import {
 
 
 export default class PCBlogHeader extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
+            current: 'top'
+        }
+    }
+
+    handleClick(e) {
+        console.log('click ', e);
+        this.setState({
+            current: e.key,
+        });
+    };
+
     render() {
         return (
             <header class="header-line">
@@ -29,7 +44,7 @@ export default class PCBlogHeader extends React.Component {
                         </a>
                     </Col>
                     <Col span={10}>
-                        <Menu mode="horizontal">
+                        <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
 
                             <Menu.Item key="home">
                                 <Icon type="home" />首页

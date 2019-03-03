@@ -27,9 +27,9 @@ export default class PCArticleBlock extends React.Component {
 
                 <li key={index}>
                         <div class="blog-module-item">
-                            {/* <Link to={`/details/${newsItem.uniquekey}`} target="_blank"> */}
+                            <Link to={`/detail/${newsItem.uniquekey}`} target="_blank">
                                 {newsItem.title}
-                            {/* </Link> */}
+                            </Link>
                         </div>
                 </li>
             ))
