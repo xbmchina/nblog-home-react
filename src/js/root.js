@@ -9,6 +9,8 @@ import PCAboutMe from './components/pc_aboutme_index';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'antd/dist/antd.css';
+import '../css/monokai_sublime.min.css';
+import '../css/md.css';
 import '../css/pc.css';
 
 class Root extends React.Component {
