@@ -1,9 +1,6 @@
 import React from 'react';
-import { Row, Col, Divider, Icon, LDivider, BackTop } from 'antd';
-import PCBlogHeader from './pc_blog_header';
-import PCBlogFooter from './pc_blog_footer';
-import { Link } from "react-router-dom";
-import LogoIcon from '../../images/logo.jpg';
+import { Row, Col, Divider, Icon, LDivider } from 'antd';
+import LogoIcon from '../../../images/logo.jpg';
 
 export default class PCAlbumIndex extends React.Component {
 
@@ -27,7 +24,6 @@ export default class PCAlbumIndex extends React.Component {
 
         return (
             <div>
-                <PCBlogHeader />
                 <div class="container">
                     <Row>
                         <Col span={4}></Col>
@@ -55,8 +51,6 @@ export default class PCAlbumIndex extends React.Component {
                         <Col span={4}></Col>
                     </Row>
                 </div>
-                <PCBlogFooter />
-                <BackTop />
             </div>
         );
     };

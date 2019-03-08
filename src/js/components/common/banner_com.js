@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class PCBlogBanner extends React.Component {
+export default class bannerCom extends React.Component {
 
     componentDidMount() {
         this.DrawCanvas();

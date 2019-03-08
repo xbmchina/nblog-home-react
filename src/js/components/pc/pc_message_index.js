@@ -1,7 +1,4 @@
 import React from 'react';
-import PCBlogHeader from './pc_blog_header';
-import PCBlogFooter from './pc_blog_footer';
-
 import {
     Row,
     Col,
@@ -12,10 +9,6 @@ import {
     Button,
     Icon
 } from 'antd';
-
-
-
-import { Link } from "react-router-dom";
 
 export default class PCMessage extends React.Component {
 
@@ -28,19 +21,18 @@ export default class PCMessage extends React.Component {
         const TextArea = Input.TextArea;
         const formItemLayout = {
             labelCol: {
-              xs: { span: 8 },
-              sm: { span: 4 },
+                xs: { span: 8 },
+                sm: { span: 4 },
             },
             wrapperCol: {
-              xs: { span: 24 },
-              sm: { span: 16 },
+                xs: { span: 24 },
+                sm: { span: 16 },
             },
-          };
+        };
 
         return (
 
             <div>
-                <PCBlogHeader />
                 <div class="container">
                     <Row>
                         <Col span={4}></Col>
@@ -56,13 +48,13 @@ export default class PCMessage extends React.Component {
                                 </p> */}
                                 <Form onSubmit={this.handleSubmit.bind(this)}>
                                     <Form.Item {...formItemLayout} label="名字：">
-                                        <Input  placeholder="你的名字" />
+                                        <Input placeholder="你的名字" />
                                     </Form.Item>
                                     <Form.Item {...formItemLayout} label="内容：">
-                                        <TextArea rows={4}  placeholder="可留言、吐槽、提问。欢迎灌水，杜绝广告！" />
+                                        <TextArea rows={4} placeholder="可留言、吐槽、提问。欢迎灌水，杜绝广告！" />
                                     </Form.Item>
                                     <Form.Item>
-                                        <Button htmlType="submit"  type="primary">
+                                        <Button htmlType="submit" type="primary">
                                             提交
                                         </Button>
                                     </Form.Item>
@@ -72,8 +64,7 @@ export default class PCMessage extends React.Component {
                         <Col span={4}></Col>
                     </Row>
                 </div>
-                <PCBlogFooter />
-                <BackTop />
+
             </div>
         );
     };

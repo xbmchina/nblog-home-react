@@ -1,5 +1,5 @@
 .container{
-  padding-top: 16px; 
+  
 }
 a,a:link,a:visited,a:hover,a:active  {
   cursor: pointer;
@@ -65,6 +65,7 @@ a,a:link,a:visited,a:hover,a:active  {
   right: 0;
   width: 125px;
   height: 100px;
+  margin-right: 14px;
 }
 
 .have-img .wrap-img img {
@@ -178,7 +179,7 @@ img {
 }
 .home-tips .tip-this {
   display: block;
-  color: #009688;
+  color: #FF5E52;
 }
 
 
@@ -238,7 +239,7 @@ img {
 /* 右侧文章推荐栏 */
 .blog-module {
   margin: 15px 0px 15px 15px;
-  padding: 5px;
+  padding-bottom: 5px;
   background: #fff;
 }
 
@@ -249,7 +250,10 @@ img {
   padding: 5px 5px 0px 0px;
 }
 
-
+.blog-module .banner-show {
+  text-align: center;
+  padding: 10px;
+}
 
 /* 留言板 */
 .aboutinfo {
@@ -309,4 +313,58 @@ img {
 
 .aboutinfo-abstract .end-tab {
   text-align: center;
+}
+
+
+/* 文章详情页 */
+.articleContainer .like {
+  text-align: center;
+}
+
+.articleContainer .meta {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+}
+
+.articleContainer .meta .item {
+  padding-left: 10px;
+}
+
+/* 文章详情页上下一篇 */
+.article-nav {
+  overflow: hidden;
+  margin-bottom: 30px;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.article-nav span {
+  float: left;
+  position: relative;
+  width: 50%;
+}
+
+.article-nav span.article-nav-next {
+  float: right;
+  text-align: right;
+}
+
+
+
+/* 登录模态框 */
+.ant-tabs .ant-tabs-top-content, .ant-tabs .ant-tabs-bottom-content {
+  width: 100%;
+  text-align: center;
+}
+
+/* 登出按钮样式 */
+
+.logout-menu {
+  display: inline-block;
+}
+.logout-menu span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

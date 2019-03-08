@@ -3,7 +3,7 @@ import { Card,Divider,Icon } from 'antd';
 
 import { Link } from "react-router-dom";
 
-export default class PCArticleBlock extends React.Component {
+export default class LikeArticle extends React.Component {
 
     constructor() {
         super();
@@ -16,7 +16,11 @@ export default class PCArticleBlock extends React.Component {
         var myFetchOptions = {
             method: 'GET'
         };
-        fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=" + this.props.type + "&count=" + this.props.count, myFetchOptions).then(response => response.json()).then(json => this.setState({ news: json }));
+
+        fetch("/blog/article/list?pageNum=" + this.props.pageNum + "&pageSize=" + this.props.pageSize+"&tagName="+this.props.tagName, myFetchOptions)
+        .then(response => response.json())
+        .then(json => this.setState({ news: json.data.data }));
+
     };
 
 
@@ -27,13 +31,13 @@ export default class PCArticleBlock extends React.Component {
 
                 <li key={index}>
                         <div class="blog-module-item">
-                            <Link to={`/detail/${newsItem.uniquekey}`} target="_blank">
+                            <Link to={`/detail/${newsItem.id}`} target="_blank">
                                 {newsItem.title}
                             </Link>
                         </div>
                 </li>
             ))
-            : '没有加载到任何新闻';
+            : '没有加载到任何文章';
         return (
             <div class="blog-module shadow">
                 <Divider>{ this.props.title}</Divider>
