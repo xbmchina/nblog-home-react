@@ -7,6 +7,8 @@ import SiteBanner from '../common/site_banner';
 import LoadingCom from '../common/loading_com';
 import PreNextArticle from '../common/pre_next_article';
 import CommentCom from '../common/comment_com';
+import https from '../../utils/https';
+import urls from '../../utils/urls';
 
 export default class PCArticleDetail extends React.Component {
 
@@ -41,17 +43,21 @@ export default class PCArticleDetail extends React.Component {
         this.setState({
             isLoading: true,
         });
-        var myFetchOptions = {
-            method: 'GET'
-        };
 
-        fetch("/blog/article/detail?id=" + this.props.match.params.id, myFetchOptions)
-            .then(response => response.json())
-            .then(json => {
-                this.setState({ newsItem: json.data, isLoading: false });
+        https.get(urls.getArticleDetail, {
+            params: {
+                id: this.props.match.params.id
+            }
+        }).then(res => {
+            let result = res.data;
+            if (result.code === 200) {
+                this.setState({ newsItem: result.data, isLoading: false });
                 document.title = this.state.newsItem.title + " - n平方 | n平方 专注Java和大数据平台";
+            }
+        }).catch(err => {
+            console.error(err);
+        });
 
-            })
     };
 
     handleLikeClick(e) {
@@ -65,7 +71,7 @@ export default class PCArticleDetail extends React.Component {
 
 
     render() {
-        const { newsItem }  = this.state; 
+        const { newsItem } = this.state;
         return (
             <div>
                 <Row>
@@ -75,7 +81,7 @@ export default class PCArticleDetail extends React.Component {
                             <div class="title">{newsItem.title}</div>
                             <div class="meta">
                                 <span class="item">{newsItem.deployTime}</span>
-                                <span class="item">分类：{newsItem.categoryId==null?'无':newsItem.categoryId}</span>
+                                <span class="item">分类：{newsItem.categoryId == null ? '无' : newsItem.categoryId}</span>
                                 <span class="item">阅读(0)</span>
                                 <span class="item">评论(0)</span>
                                 <span class="item">点赞(0)</span>

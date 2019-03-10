@@ -7,16 +7,15 @@ import {
     Menu,
     Icon,
     Tabs,
-    message,
     Form,
     Input,
     Button,
-    CheckBox,
     Modal
 } from 'antd';
 
 import { Link } from "react-router-dom";
 import LoginAndRegCom from '../common/login_and_reg';
+
 
 const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
@@ -53,17 +52,11 @@ class PCBlogHeader extends React.Component {
 
     //从子组件中拿数据
     getDataForm(value) {
-        console.log("getDataForm 11111:" + value);
         this.setState(value)
-        console.log("getDataForm 2342412:" + this.state);
     }
 
     callback(key) {
-        if (key == 1) {
-            this.setState({ action: 'login' });
-        } else if (key == 2) {
-            this.setState({ action: 'register' });
-        }
+        
     };
 
     logout() {
@@ -79,11 +72,9 @@ class PCBlogHeader extends React.Component {
     };
 
     handleClick(e) {
-        console.log('click ', e);
         this.setState({
             current: e.key
         });
-        console.log('click '+ this.setState.current);
         if (e.key === 'logout') {
             this.logout();
         }
@@ -104,7 +95,7 @@ class PCBlogHeader extends React.Component {
                         </a>
                     </Col>
                     <Col span={10}>
-                        <Menu style={{height:"60px"}} mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
+                        <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
 
                             <Menu.Item key="home">
                                 <Link to='/'>
@@ -134,24 +125,24 @@ class PCBlogHeader extends React.Component {
                         </Menu>
                     </Col>
                     <Col span={8}>
-                        <div>
-                            <Form layout="inline">
-                                <Form.Item>
-                                    <Input prefix={<Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="搜索内容" />
-                                </Form.Item>
-                                <Form.Item>
-                                    <Button type="primary" htmlType="submit">搜索</Button>
-                                    {hasLogined === true ?
-                                        <Menu class="logout-menu" mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
-                                            <SubMenu title={<span className="submenu-title-wrapper">{avatar === null || avatar=== undefined ? <img style={{ height: '42px' }} src={LogoIcon} alt="avatar" /> : <img style={{ height: '42px' }} src={avatar} alt="avatar" />}{username}</span>}>
-                                                <Menu.Item key="logout">退出</Menu.Item>
-                                            </SubMenu>
-                                        </Menu>
-                                        : <Button type="danger" style={{ marginLeft: '18px', padding: '0 10px 0 10px' }} onClick={() => this.setModalVisible(true)}><Icon type="login" /></Button>
-                                    }
-                                </Form.Item>
-                            </Form>
-                        </div>
+                        <Row gutter={16}>
+                        <Col span={11} >
+                            <Input prefix={<Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="搜索内容" />
+                            </Col>
+                            <Col span={4}>
+                            <Button type="primary" htmlType="submit">搜索</Button>
+                            </Col>
+                            <Col span={9}>
+                            {hasLogined === true ?
+                                <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
+                                    <SubMenu title={<span>{avatar === null || avatar === undefined || avatar === 'null' ? <img style={{ height: '42px' }} src={LogoIcon} alt="avatar" /> : <img style={{ height: '42px' }} src={avatar} alt="avatar" />}{username}</span>}>
+                                        <Menu.Item key="logout">退出</Menu.Item>
+                                    </SubMenu>
+                                </Menu>
+                                : <Button type="danger" style={{ marginLeft: '18px', padding: '0 10px 0 10px' }} onClick={() => this.setModalVisible(true)}><Icon type="login" /></Button>
+                            }
+                            </Col>
+                        </Row>
 
                         <Modal visible={this.state.modalVisible} footer={null} onCancel={() => this.setModalVisible(false)} >
                             <Tabs type="card" onChange={this.callback.bind(this)} class="login-tab">

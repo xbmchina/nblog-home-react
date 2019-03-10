@@ -3,7 +3,10 @@ import { Row, Col, Icon } from 'antd';
 import { Link } from "react-router-dom";
 import LoadingCom from './../common/loading_com';
 import LoadEndCom from './../common/load_end_com';
-import  nlog  from '../../../images/n2.jpg';
+import nlog from '../../../images/n2.jpg';
+import https from '../../utils/https';
+import urls from '../../utils/urls';
+
 import {
     getScrollTop,
     getDocumentHeight,
@@ -45,41 +48,42 @@ export default class PCArticleList extends React.Component {
         this.setState({
             isLoading: true,
         });
-        var myFetchOptions = {
-            method: 'GET'
-        };
-        
-        fetch("/blog/article/list?pageNum=" + this.state.pageNum + "&pageSize=" + this.state.pageSize, myFetchOptions)
-            .then(response => response.json())
-            .then(json => {
-                if (json.code === 200) {
-                    this.setState(preState =>({
-                        articleList: [...preState.articleList, ...json.data.data],
-                        isLoading: false,
-                        pageNum: json.data.pageNum+1,
-                        pageSize: json.data.pageSize,
-                        total: json.data.total
-                    }));
-                    if (this.state.total === this.state.articleList.length) {
-                        console.log("done:"+this.state.total);
-						this.setState({
-							isLoadEnd: true,
-                        });
-                    }
+
+        https.get(urls.getArticleList, {
+            params: {
+                pageNum: this.state.pageNum,
+                pageSize: this.state.pageSize
+            }
+        }).then(res => {
+            let result = res.data;
+            if (result.code === 200) {
+                this.setState(preState => ({
+                    articleList: [...preState.articleList, ...result.data.data],
+                    isLoading: false,
+                    pageNum: result.data.pageNum + 1,
+                    pageSize: result.data.pageSize,
+                    total: result.data.total
+                }));
+                if (this.state.total === this.state.articleList.length) {
+                    this.setState({
+                        isLoadEnd: true,
+                    });
                 }
-                
-            });
+            }
+        }).catch(err => {
+            console.error(err);
+        });
 
     }
 
     render() {
-        const articleList  = this.state.articleList;
+        const articleList = this.state.articleList;
         const newsList = articleList.length
             ? articleList.map((articleItem, index) => (
                 <section key={index} class="article-item have-img shadow">
                     <Link to={`/detail/${articleItem.id}`} target="_blank" class="wrap-img">
                         {/* <a class="wrap-img" href="/p/86207ea765b2" target="_blank"> */}
-                        <img class="img-blur-done" src={articleItem.img === null? nlog :articleItem.img} alt="120" />
+                        <img class="img-blur-done" src={articleItem.img === null ? nlog : articleItem.img} alt="120" />
                         {/* </a> */}
                     </Link>
                     <div class="content">
@@ -87,7 +91,7 @@ export default class PCArticleList extends React.Component {
                             {articleItem.title}
                         </Link>
                         <p class="abstract">
-                            {articleItem.shortcut === null? articleItem.title : articleItem.shortcut}
+                            {articleItem.shortcut === null ? articleItem.title : articleItem.shortcut}
                         </p>
                         <div class="meta">
                             <Link to={`/detail/${articleItem.id}`} target="_blank">
@@ -100,7 +104,7 @@ export default class PCArticleList extends React.Component {
                                 <i class="iconfont ic-list-comments"><Icon type="heart" /></i> {articleItem.likeNum}
                             </Link>
                             <Link to={`/detail/${articleItem.id}`} target="_blank">
-                                <i class="iconfont ic-list-comments"><Icon type="tag" /></i> {articleItem.tagName==null ? '随笔' : articleItem.tagName}
+                                <i class="iconfont ic-list-comments"><Icon type="tag" /></i> {articleItem.tagName == null ? '随笔' : articleItem.tagName}
                             </Link>
                             <span class="time" data-shared-at="2019-03-01T22:46:15+08:00">{articleItem.deployTime}</span>
                         </div>

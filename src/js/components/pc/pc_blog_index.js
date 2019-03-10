@@ -23,7 +23,7 @@ export default class PCBlogIndex extends React.Component {
 			<div>
 				<Layout>
 					<Header style={headerStyle}><PCBlogHeader /></Header>
-					<Content style={{ background: 'white',marginTop: '60px' }}>{this.props.children}</Content>
+					<Content style={{ background: 'white',marginTop: '65px' }}>{this.props.children}</Content>
 					<Footer style={{ background: 'white' }}><PCBlogFooter /></Footer>
 				</Layout>
 				<BackTop />

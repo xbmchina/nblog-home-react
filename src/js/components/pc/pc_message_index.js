@@ -42,10 +42,6 @@ export default class PCMessage extends React.Component {
                                 <div class="aboutinfo-contact">
                                     <p>沟通交流，拉近你我！</p>
                                 </div>
-                                {/* <p class="aboutinfo-introduce">本页面可留言、吐槽、提问。欢迎灌水，杜绝广告！</p> */}
-                                {/* <p class="aboutinfo-location">
-                                    <i class="fa fa-clock-o"></i>&nbsp;<span>2019-3-3 21:25:17</span>
-                                </p> */}
                                 <Form onSubmit={this.handleSubmit.bind(this)}>
                                     <Form.Item {...formItemLayout} label="名字：">
                                         <Input placeholder="你的名字" />

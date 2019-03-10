@@ -1,26 +1,19 @@
 import React from 'react';
-import LogoIcon from '../../../images/logo.jpg';
+import qs from 'Qs'
 
 import {
-    Row,
-    Col,
-    Menu,
     Icon,
-    Tabs,
     message,
     Form,
     Input,
     Button,
-    CheckBox,
-    Modal
 } from 'antd';
 
-import { Link } from "react-router-dom";
+import https from '../../utils/https';
+import urls from '../../utils/urls';
 
 const FormItem = Form.Item;
-const SubMenu = Menu.SubMenu;
-const TabPane = Tabs.TabPane;
-const MenuItemGroup = Menu.ItemGroup;
+
 
 class LoginAndRegCom extends React.Component {
 
@@ -40,61 +33,76 @@ class LoginAndRegCom extends React.Component {
         this.props.closeModal(this.state);
     }
 
+    login(username, password) {
+        https.post(
+            urls.login,
+            qs.stringify({
+                username: username,
+                password: password,
+            }),
+        ).then(res => {
+            const result = res.data;
+            if (result.code === 200) {
+                let userDat = result.data;
+                //用户信息
+                this.setState({ username: userDat.username, userid: userDat.id, avatar: userDat.icon });
+                this.setState({ hasLogined: true });
+
+                sessionStorage.userid = userDat.id;
+                sessionStorage.username = userDat.username;
+                sessionStorage.token = userDat.token;
+                sessionStorage.avatar = userDat.icon;
+
+                message.success(result.message);
+                this.handleCloseModal();
+                this.props.form.resetFields();
+            } else {
+                message.error(result.message);
+            }
+        }).catch(err => {
+            console.error(err);
+        });
+    }
+
+    register(data) {
+
+        https.post(
+            urls.register,
+            qs.stringify({
+                username: data.username,
+                password: data.password,
+                ackPassword: data.ackPassword
+            }),
+        ).then(res => {
+            const result = res.data;
+            if (result.code === 200) {
+                message.success(result.message);
+                this.handleCloseModal();
+                this.props.form.resetFields();
+            } else {
+                message.error(result.message);
+            }
+        }).catch(err => {
+            console.error(err);
+        });
+
+    }
+
     handleSubmit(e) {
         //页面开始向 API 进行提交数据
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 const { tabSelect } = this.props;
-                console.log('Received values of form: ', values);
-                var data = new FormData()
-                data.append('username', values.username);
-                data.append('password', values.password);
-                if (tabSelect === 2) {
-                    data.append('ackPassword', values.ackPassword);
-                }
-                var myFetchOptions = {
-                    method: 'POST',
-                    body: data
-                };
                 if (tabSelect === 1) {//登录
-                    fetch("/blog/u/login", myFetchOptions)
-                        .then(response => response.json())
-                        .then(json => {
-                            console.log("login" + json);
-                            if(json.code === 200) {
-                                let userDat = json.data;
-                                //用户信息
-                                this.setState({ username: userDat.username, userid: userDat.id,avatar:userDat.icon });
-                                this.setState({ hasLogined: true });
+                    this.login(values.username, values.password);
 
-                                sessionStorage.userid = userDat.id;
-                                sessionStorage.username = userDat.username;
-                                sessionStorage.token = userDat.token;
-                                sessionStorage.avatar = userDat.icon;
-                                
-                                message.success(json.message);
-                                this.handleCloseModal(); 
-                            }else {
-                                message.error(json.message);
-                            }
-                          
-                        });
                 } else {//注册
-                    fetch("/blog/u/register", myFetchOptions)
-                        .then(response => response.json())
-                        .then(json => {
-                            if (json.code === 200) {
-                                message.success(json.message);
-                                this.handleCloseModal();  
-                            }else{
-                                message.error(json.message);
-                            }
-                        });
+                    this.register(values);
                 }
 
-                
-              
+
+
             }
         });
 
