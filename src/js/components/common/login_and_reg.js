@@ -11,10 +11,15 @@ import {
 
 import https from '../../utils/https';
 import urls from '../../utils/urls';
+import { connect } from 'react-redux';
+import {loginSuccess} from '../../store/actions/user'
 
 const FormItem = Form.Item;
 
-
+@connect(
+    state => ({userInfo:state.user.userInfo}),
+    { loginSuccess } 
+  )
 class LoginAndRegCom extends React.Component {
 
     constructor() {
@@ -47,15 +52,18 @@ class LoginAndRegCom extends React.Component {
                 //用户信息
                 this.setState({ username: userDat.username, userid: userDat.id, avatar: userDat.icon });
                 this.setState({ hasLogined: true });
-
+                console.log("loginSuccess........."+this.state)
+                console.log("loginSuccess....."+this.props.userInfo);
+                this.props.loginSuccess(this.state);
                 sessionStorage.userid = userDat.id;
                 sessionStorage.username = userDat.username;
                 sessionStorage.token = userDat.token;
                 sessionStorage.avatar = userDat.icon;
-
+                
                 message.success(result.message);
                 this.handleCloseModal();
                 this.props.form.resetFields();
+                // location.reload();
             } else {
                 message.error(result.message);
             }

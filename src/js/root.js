@@ -10,10 +10,15 @@ import '../css/monokai_sublime.min.css';
 import '../css/md.css';
 import '../css/pc.css';
 
+import { Provider } from 'react-redux'
+import configureStore from './store/configureStore'
+const store = configureStore();
+
 class Root extends React.Component {
 
 	render() {
 		return (
+			<Provider store={store}>
 			<Router>
 				<Switch>
 					<PCBlogIndex>
@@ -21,7 +26,7 @@ class Root extends React.Component {
 					</PCBlogIndex>
 				</Switch>
 			</Router>
-
+			</Provider>
 		);
 	}
 }

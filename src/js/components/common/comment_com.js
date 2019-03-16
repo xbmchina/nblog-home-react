@@ -6,14 +6,6 @@ import moment from 'moment';
 
 const TextArea = Input.TextArea;
 
-const CommentList = ({ comments }) => (
-    <List
-        dataSource={comments}
-        header={`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`}
-        itemLayout="horizontal"
-        renderItem={props => <Comment {...props} />}
-    />
-);
 
 const Editor = ({
     onChange, onSubmit, submitting, value,
@@ -44,7 +36,9 @@ export default class CommentCom extends React.Component {
         comments: [],
         submitting: false,
         value: '',
+        articleId: null
     }
+
 
     handleSubmit = () => {
         if (!this.state.value) {
@@ -55,21 +49,12 @@ export default class CommentCom extends React.Component {
             submitting: true,
         });
 
-        setTimeout(() => {
-            this.setState({
-                submitting: false,
-                value: '',
-                comments: [
-                    {
-                        author: 'Han Solo',
-                        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-                        content: <p>{this.state.value}</p>,
-                        datetime: moment().fromNow(),
-                    },
-                    ...this.state.comments,
-                ],
-            });
-        }, 1000);
+        this.props.handleCommentSubmit(this.state);
+
+        this.setState({
+            submitting: false,
+            value: '',
+        });
     }
 
     handleChange = (e) => {
@@ -79,16 +64,13 @@ export default class CommentCom extends React.Component {
     }
 
     render() {
-        const { comments, submitting, value } = this.state;
+        const { submitting, value } = this.state;
         return (
             <div>
                 <Divider orientation="left">评论：</Divider>
                 <Comment
                     avatar={(
-                        <Avatar
-                            src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                            alt="Han Solo"
-                        />
+                        <Avatar icon="user" />
                     )}
                     content={(
                         <Editor
@@ -99,7 +81,6 @@ export default class CommentCom extends React.Component {
                         />
                     )}
                 />
-                  {comments.length > 0 && <CommentList comments={comments} />}
             </div>
         );
     }
