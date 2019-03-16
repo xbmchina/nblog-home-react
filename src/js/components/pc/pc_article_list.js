@@ -7,6 +7,7 @@ import nlog from '../../../images/n2.jpg';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 
+
 import {
     getScrollTop,
     getDocumentHeight,
@@ -52,7 +53,8 @@ export default class PCArticleList extends React.Component {
         https.get(urls.getArticleList, {
             params: {
                 pageNum: this.state.pageNum,
-                pageSize: this.state.pageSize
+                pageSize: this.state.pageSize,
+                specialId: this.props.specialId
             }
         }).then(res => {
             let result = res.data;

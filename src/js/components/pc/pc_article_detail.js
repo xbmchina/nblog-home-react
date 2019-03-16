@@ -194,9 +194,9 @@ export default class PCArticleDetail extends React.Component {
                     </Col>
                     <Col span={6}>
                         {/* <PCNewsImageBlock count={40} type="top" width="100%" cardTitle="相关新闻" imageWidth="150px"/> */}
-                        <SiteBanner width="100%" bordered="false" title="本站公众号" />
                         <PCArticleBlock pageNum={0} pageSize={8} tagName="Java" width="100%" bordered="false" title="相关专栏" />
                         <PCArticleBlock pageNum={0} pageSize={8} tagName="SpringBoot" width="100%" bordered="false" title="相似文章" />
+                        <SiteBanner width="100%" bordered="false" title="本站公众号" bannerTip="专注Java和大数据的平台"/>
                     </Col>
                     <Col span={2}></Col>
                 </Row>

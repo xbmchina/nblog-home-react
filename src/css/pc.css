@@ -1,4 +1,6 @@
-.container {}
+.container {
+  padding-top: 10px;
+}
 
 a, a:link, a:visited, a:hover, a:active {
   cursor: pointer;
@@ -252,6 +254,14 @@ img {
 .blog-module .banner-show {
   text-align: center;
   padding: 10px;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.blog-module .banner-show img {
+  width:100%;
+  height:auto;
 }
 
 /* 留言板 */

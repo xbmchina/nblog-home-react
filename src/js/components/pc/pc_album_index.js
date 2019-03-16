@@ -1,51 +1,60 @@
 import React from 'react';
 import { Row, Col, Card, Divider, Icon, List } from 'antd';
+import { Link } from "react-router-dom";
+import LoadingCom from './../common/loading_com';
+import LoadEndCom from './../common/load_end_com';
+import nlog from '../../../images/n2.jpg';
+import https from '../../utils/https';
+import urls from '../../utils/urls';
 
 export default class PCAlbumIndex extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            news: ''
+            news: '',
+            specialList: [],
+            isLoadEnd: false,
+            isLoading: false,
         };
     }
 
     componentWillMount() {
-        // var myFetchOptions = {
-        //     method: 'GET'
-        // };
-        // fetch("http://newsapi.gugujiankong.com/Handler.ashx?action=getnews&type=" + this.props.type + "&count=" + this.props.count, myFetchOptions).then(response => response.json()).then(json => this.setState({ news: json }));
+     this.getSpecialList();
     };
+
+    getSpecialList() {
+        this.setState({
+            isLoading: true,
+        });
+
+        https.get(urls.getSpecialList).then(res => {
+            let result = res.data;
+            if (result.code === 200) {
+                this.setState(preState => ({
+                    specialList: [...preState.specialList, ...result.data.data],
+                    isLoading: false,
+                    pageNum: result.data.pageNum + 1,
+                    pageSize: result.data.pageSize,
+                    total: result.data.total
+                }));
+                if (this.state.total === this.state.specialList.length) {
+                    this.setState({
+                        isLoadEnd: true,
+                    });
+                }
+            }
+        }).catch(err => {
+            console.error(err);
+        });
+
+    }
+
 
 
     render() {
-        const { news } = this.state;
-        const data = [
-            {
-                title: 'Title 1',
-            },
-            {
-                title: 'Title 2',
-            },
-            {
-                title: 'Title 3',
-            },
-            {
-                title: 'Title 4',
-            },
-            {
-                title: 'Title 1',
-            },
-            {
-                title: 'Title 2',
-            },
-            {
-                title: 'Title 3',
-            },
-            {
-                title: 'Title 4',
-            },
-        ];
+        const { specialList } = this.state;
+      
         const { Meta } = Card;
 
         return (
@@ -56,20 +65,22 @@ export default class PCAlbumIndex extends React.Component {
                         <Col span={20}>
                             <List
                                 grid={{ gutter: 16, column: 4 }}
-                                dataSource={data}
+                                dataSource={specialList}
                                 renderItem={item => (
+                                    <Link to={`/albumList/${item.id}`} >
                                     <List.Item>
                                         <Card
                                             hoverable
                                             style={{ width: 240 }}
-                                            cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+                                            cover={<img alt={item.name} src={item.img}  style={{height:'160px'}}/>}
                                         >
                                             <Meta
-                                                title="Europe Street beat"
-                                                description="www.instagram.com"
+                                                title={item.name}
+                                                description={item.detail}
                                             />
                                         </Card>
                                     </List.Item>
+                                    </Link>
                                 )}
                             />
                         </Col>

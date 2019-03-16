@@ -64,6 +64,15 @@ let config = [
             loader: () => import('../components/pc/pc_aboutme_index'),
             loading: () => <div />
         })
+    },
+    {
+        name: 'albumlList',
+        path: '/albumList/:id',
+        exact: false,
+        component: Loadable({
+            loader: () => import('../components/pc/pc_album_list'),
+            loading: () => <div />
+        })
     }
     
 ]

@@ -7,7 +7,9 @@ export const urls = {
   register: 'u/register',
   likeArticle: '/article/like',
   addComment: '/article/comment',
-  getComments: '/article/getComments'
+  getComments: '/article/getComments',
+  getSpecialList: '/special/list',
+  addMessage:'/article/addMessage',
 };
 
 export default urls;
