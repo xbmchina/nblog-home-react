@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Divider, Icon } from 'antd';
+import {  Divider } from 'antd';
 
 import { Link } from "react-router-dom";
 import https from '../../utils/https';

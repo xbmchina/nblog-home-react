@@ -11,3 +11,8 @@ export const LOGOUT = 'LOGOUT'
  */
 export const ADD_COMMENT = 'ADD_COMMENT'
 
+
+/**
+ * 文章列表
+ */
+export const GET_ARTICLE_LIST = 'GET_ARTICLE_LIST'

@@ -1,9 +1,6 @@
 import React from 'react';
-import { Row, Col, Card, Divider, Icon, List } from 'antd';
+import { Row, Col, Card, List } from 'antd';
 import { Link } from "react-router-dom";
-import LoadingCom from './../common/loading_com';
-import LoadEndCom from './../common/load_end_com';
-import nlog from '../../../images/n2.jpg';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 

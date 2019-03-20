@@ -1,5 +1,5 @@
 import React from 'react';
-import AvatarIcon from '../../../images/avatar.jpg';
+import AvatarIcon from '../../../asset/images/avatar.jpg';
 import { Icon } from 'antd';
 
 

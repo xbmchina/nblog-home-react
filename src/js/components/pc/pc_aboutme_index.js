@@ -1,7 +1,7 @@
 import React from 'react';
-import { Row, Col, Divider, Icon, LDivider } from 'antd';
-import LogoIcon from '../../../images/logo.jpg';
-import n2 from '../../../images/n.png'
+import { Row, Col, Divider } from 'antd';
+import LogoIcon from '../../../asset/images/logo.jpg';
+import n2 from '../../../asset/images/n.png'
 
 export default class PCAlbumIndex extends React.Component {
 

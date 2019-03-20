@@ -3,7 +3,7 @@ import { Row, Col, Icon } from 'antd';
 import { Link } from "react-router-dom";
 import LoadingCom from './../common/loading_com';
 import LoadEndCom from './../common/load_end_com';
-import nlog from '../../../images/n2.jpg';
+import nlog from '../../../asset/images/n2.jpg';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 
@@ -11,11 +11,16 @@ import urls from '../../utils/urls';
 import {
     getScrollTop,
     getDocumentHeight,
-    getWindowHeight,
-    getQueryStringByName,
-    timestampToTime,
+    getWindowHeight
 } from '../../utils/uitl';
 
+import { connect } from 'react-redux';
+import { selectArticleList } from '../../store/actions/article'
+
+@connect(
+    state => ({ article: state.article.article }),
+    { selectArticleList }
+)
 export default class PCArticleList extends React.Component {
     constructor() {
         super();
@@ -25,13 +30,33 @@ export default class PCArticleList extends React.Component {
             isLoading: false,
             pageNum: 1,
             pageSize: 10,
-            total: 0
+            total: 0,
+            title: ''
+
         };
     }
     componentWillMount() {
         this.getArticleList();
     };
 
+    componentWillUpdate(nextProps, nextState) {
+        if (nextState.title === nextProps.article.title) {
+            return false;
+        } else if (nextProps.article.title === "" && nextState.title != '') {
+            this.setState({
+                articleList: '',
+                isLoadEnd: false,
+                isLoading: false,
+                pageNum: 1,
+                pageSize: 10,
+                total: 0,
+                title: ''
+            })
+            this.getArticleList();
+        } else {
+            this.selectArticleList(nextProps.article);
+        }
+    }
     componentDidMount() {
 
         //滚动加载更多
@@ -45,16 +70,53 @@ export default class PCArticleList extends React.Component {
         };
     }
 
-    getArticleList() {
+    selectArticleList(article) {
         this.setState({
             isLoading: true,
+            title: article.title
+        });
+        let params = {
+            pageNum: this.state.pageNum,
+            pageSize: this.state.pageSize,
+            specialId: this.props.specialId,
+        }
+        if (article && article.title) {
+            params.title = article.title;
+        }
+
+        https.get(urls.getArticleList, { params }).then(res => {
+            let result = res.data;
+            if (result.code === 200) {
+                this.setState(preState => ({
+                    articleList: result.data.data,
+                    isLoading: false,
+                    pageNum: result.data.pageNum,
+                    pageSize: result.data.pageSize,
+                    total: result.data.total
+                }));
+                if (this.state.total === this.state.articleList.length) {
+                    this.setState({
+                        isLoadEnd: true,
+                    });
+                }
+            }
+        }).catch(err => {
+            console.error(err);
         });
 
+    }
+
+
+    getArticleList() {
+        this.setState({
+            isLoading: true
+        });
+        console.log("sdfsadfsdaf" + this.state);
         https.get(urls.getArticleList, {
             params: {
                 pageNum: this.state.pageNum,
                 pageSize: this.state.pageSize,
-                specialId: this.props.specialId
+                specialId: this.props.specialId,
             }
         }).then(res => {
             let result = res.data;

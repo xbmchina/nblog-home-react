@@ -1,6 +1,6 @@
 import React from 'react';
 import { Divider } from 'antd';
-import nlog from '../../../images/n2.jpg';
+import nlog from '../../../asset/images/n2.jpg';
 
 export default class SiteBanner extends React.Component {
 

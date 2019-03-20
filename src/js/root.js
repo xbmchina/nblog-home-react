@@ -6,9 +6,7 @@ import routers from './router/index';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import 'antd/dist/antd.css';
-import '../css/monokai_sublime.min.css';
-import '../css/md.css';
-import '../css/pc.css';
+import '../asset/css/pc.css';
 
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'

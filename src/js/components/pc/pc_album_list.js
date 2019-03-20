@@ -1,13 +1,8 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import BannerCom from '../common/banner_com';
 import PCArticleBlock from '../common/article_block';
 import SiteBanner from '../common/site_banner';
 import PCArticleList from './pc_article_list'
-import PCBlogTips from './pc_blog_tips';
-import PCBlogAbout from './pc_blog_about';
-
-
 
 export default class PCAlbumList extends React.Component {
 

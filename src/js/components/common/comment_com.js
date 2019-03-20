@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-    Comment, Avatar, Form, Button, List, Input,Divider
+    Comment, Avatar, Form, Button, Input,Divider
 } from 'antd';
-import moment from 'moment';
 
 const TextArea = Input.TextArea;
-
 
 const Editor = ({
     onChange, onSubmit, submitting, value,

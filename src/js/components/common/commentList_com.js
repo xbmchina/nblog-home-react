@@ -5,7 +5,6 @@ import {
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 import qs from 'Qs';
-import moment from 'moment';
 
 const TextArea = Input.TextArea;
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Icon } from 'antd';
+import { Icon } from 'antd';
 export default class PCBlogTips extends React.Component {
 
     componentDidMount() {

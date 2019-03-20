@@ -1,3 +1,5 @@
+import '../../../asset/css/monokai_sublime.min.css';
+import '../../../asset/css/md.css';
 import React from 'react';
 import { Row, Col, Divider, Icon, Button, message } from 'antd';
 import marked from 'marked';
@@ -11,7 +13,6 @@ import CommentListCom from '../common/commentList_com';
 import https from '../../utils/https';
 import urls from '../../utils/urls';
 import qs from 'Qs';
-import moment from 'moment';
 
 export default class PCArticleDetail extends React.Component {
 

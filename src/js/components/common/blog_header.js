@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoIcon from '../../../images/logo.jpg';
+import LogoIcon from '../../../asset/images/logo.jpg';
 
 import {
     Row,
@@ -16,12 +16,16 @@ import {
 import { Link } from "react-router-dom";
 import LoginAndRegCom from '../common/login_and_reg';
 
-
-const FormItem = Form.Item;
 const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
-const MenuItemGroup = Menu.ItemGroup;
 
+import { connect } from 'react-redux';
+import {selectArticleList} from '../../store/actions/article'
+
+@connect(
+    state => ({article:state.article.article}),
+    { selectArticleList } 
+  )
 class PCBlogHeader extends React.Component {
 
     constructor() {
@@ -33,7 +37,8 @@ class PCBlogHeader extends React.Component {
             username: null,
             avatar: null,
             userid: null,
-            token: null
+            token: null,
+            searchValue:''
         }
     }
 
@@ -45,6 +50,21 @@ class PCBlogHeader extends React.Component {
             this.setState({ token: sessionStorage.token });
         }
     }
+
+    searchSumbit = () => {
+        // if (!this.state.searchValue) {
+        //     return;
+        // }
+        this.props.selectArticleList({
+                title:this.state.searchValue
+        })
+    }
+
+    searchChangeValue = (e) => {
+        this.setState({
+            searchValue: e.target.value,
+        });
+    };
 
     setModalVisible(value) {
         this.setState({ modalVisible: value });
@@ -127,10 +147,10 @@ class PCBlogHeader extends React.Component {
                     <Col span={8}>
                         <Row gutter={16}>
                         <Col span={11} >
-                            <Input prefix={<Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="搜索内容" />
+                            <Input prefix={<Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />} onChange={this.searchChangeValue} placeholder="搜索内容" />
                             </Col>
                             <Col span={4}>
-                            <Button type="primary" htmlType="submit">搜索</Button>
+                            <Button type="primary" htmlType="submit" onClick={this.searchSumbit}>搜索</Button>
                             </Col>
                             <Col span={9}>
                             {hasLogined === true ?
