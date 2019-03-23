@@ -16,7 +16,6 @@ if (process.env.NODE_ENV === 'development') {
 	});
 }
 
-// console.log('process.env.BASE_URL',process.env.BASE_URL)
 // request拦截器 axios的一些配置
 service.interceptors.request.use(
 	config => {

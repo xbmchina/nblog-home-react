@@ -15,14 +15,14 @@ export default class PCBlogContent extends React.Component {
 		return (
 			<div class="container">
 				<Row>
-					<Col span={2}></Col>
-					<Col span={20}>
+					<Col xs={{ span: 0 }} md={{ span: 2}}></Col>
+					<Col xs={{ span: 24 }} md={{ span: 20}}>
 						<BannerCom />
 						<PCBlogTips />
-						<Col span={16}>
+						<Col xs={{ span: 24 }} md={{ span: 16}}>
 							<PCArticleList />
 						</Col>
-						<Col span={8}>
+						<Col xs={{ span: 0 }} md={{ span: 8}}>
 							<PCBlogAbout />
 							<VisitSum />
 							<PCArticleBlock pageNum={0} pageSize={8} tagName="SpringBoot" width="100%" bordered="false" title="热文排行" />
@@ -32,7 +32,7 @@ export default class PCBlogContent extends React.Component {
 
 						</Col>
 					</Col>
-					<Col span={2}></Col>
+					<Col xs={{ span: 0 }} md={{ span: 2}}></Col>
 				</Row>
 			</div>
 		);

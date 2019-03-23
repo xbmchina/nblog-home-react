@@ -65,7 +65,7 @@ export default class PCArticleDetail extends React.Component {
             let result = res.data;
             if (result.code === 200) {
                 this.setState({ articleItem: result.data, isLoading: false });
-                document.title = this.state.articleItem.title + " - n平方 | n平方 专注Java和大数据平台";
+                document.title = this.state.articleItem.title + " - n平方 | 专注Java和大数据平台";
             }
         }).catch(err => {
             console.error(err);
@@ -171,8 +171,8 @@ export default class PCArticleDetail extends React.Component {
         return (
             <div>
                 <Row>
-                    <Col span={2}></Col>
-                    <Col span={14} className="container">
+                    <Col xs={{ span: 0 }} md={{ span: 2}}></Col>
+                    <Col xs={{ span: 24 }} md={{ span: 14}}>
                         <div class="articleContainer shadow">
                             <div class="title">{articleItem.title}</div>
                             <div class="meta">
@@ -193,13 +193,13 @@ export default class PCArticleDetail extends React.Component {
                             <CommentListCom comments={comments} getArticleComments={this.getArticleComments}/>
                         </div>
                     </Col>
-                    <Col span={6}>
+                    <Col xs={{ span: 0 }} md={{ span: 6}}>
                         {/* <PCNewsImageBlock count={40} type="top" width="100%" cardTitle="相关新闻" imageWidth="150px"/> */}
                         <PCArticleBlock pageNum={0} pageSize={8} tagName="Java" width="100%" bordered="false" title="相关专栏" />
                         <PCArticleBlock pageNum={0} pageSize={8} tagName="SpringBoot" width="100%" bordered="false" title="相似文章" />
                         <SiteBanner width="100%" bordered="false" title="本站公众号" bannerTip="专注Java和大数据的平台"/>
                     </Col>
-                    <Col span={2}></Col>
+                    <Col xs={{ span: 0 }} md={{ span: 2}}></Col>
                 </Row>
 
             </div>

@@ -83,7 +83,6 @@ const mockTest = function (urls) {
   for (const key in mockData) {
     if (mockData[key].debug === true && urls[key] !== undefined) {
       Mock.mock(urls[key], mockData[key].data)
-      // console.log('urls[key]',urls[key])
     }
   }
 }

@@ -17,7 +17,7 @@ export default class PCAlbumIndex extends React.Component {
     }
 
     componentWillMount() {
-     this.getSpecialList();
+        this.getSpecialList();
     };
 
     getSpecialList() {
@@ -51,40 +51,42 @@ export default class PCAlbumIndex extends React.Component {
 
     render() {
         const { specialList } = this.state;
-      
+
         const { Meta } = Card;
 
         return (
             <div>
                 <div class="container">
                     <Row>
-                        <Col span={2}></Col>
-                        <Col span={20}>
+                        <Col xs={{ span: 0 }} md={{ span: 2}}></Col>
+                        <Col xs={{ span: 24 }} md={{ span: 20}}>
                             <List
-                                grid={{ gutter: 16, column: 4 }}
+                                grid={{
+                                    gutter: 16, xs: 1, sm: 2, md: 4, lg: 4, xl: 4, xxl: 3,
+                                }}
                                 dataSource={specialList}
                                 renderItem={item => (
                                     <Link to={`/albumList/${item.id}`} >
-                                    <List.Item>
-                                        <Card
-                                            hoverable
-                                            style={{ width: 240 }}
-                                            cover={<img alt={item.name} src={item.img}  style={{height:'160px'}}/>}
-                                        >
-                                            <Meta
-                                                title={item.name}
-                                                description={item.detail}
-                                            />
-                                        </Card>
-                                    </List.Item>
+                                        <List.Item>
+                                            <Card
+                                                hoverable
+                                                class="container-card"
+                                                cover={<img alt={item.name} src={item.img} class="container-card-img" />}
+                                            >
+                                                <Meta
+                                                    title={item.name}
+                                                    description={item.detail}
+                                                />
+                                            </Card>
+                                        </List.Item>
                                     </Link>
                                 )}
                             />
                         </Col>
-                        <Col span={2}></Col>
+                        <Col xs={{ span: 0 }} md={{ span: 2}}></Col>
                     </Row>
                 </div>
-              
+
             </div>
         );
     };

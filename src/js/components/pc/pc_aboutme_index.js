@@ -34,7 +34,7 @@ export default class PCAlbumIndex extends React.Component {
                                 <p class="aboutinfo-introduce">记录博主学习和成长之路，分享学习Java和大数据相关技术</p>
                                 <p class="aboutinfo-location"><a target="_blank" href="http://www.xbmchina.cn">www.xbmchina.cn</a></p>
                                 <Divider>简介</Divider>
-                                <div class="">
+                                <div>
                                     <p >这是个人博客网站，诞生于2019年3月17日</p>
                                     <h1>当前版本</h1>
                                     <p>本站前台使用react搭建，后台使用Springboot+mysql进行搭建</p>

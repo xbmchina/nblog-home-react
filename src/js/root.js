@@ -7,6 +7,8 @@ import routers from './router/index';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import 'antd/dist/antd.css';
 import '../asset/css/pc.css';
+import '../asset/css/moblie.css';
+// import '../asset/css/pc.scss';
 
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'

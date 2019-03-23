@@ -17,7 +17,6 @@ export function user(state = initUserState,action){
 
     switch(action.type) {
         case types.LOGOIN_SUCCESS:
-            console.log("user......"+ action.payload);
             return {
                 ...state,
                 userInfo: action.payload

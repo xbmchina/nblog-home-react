@@ -20,12 +20,12 @@ const SubMenu = Menu.SubMenu;
 const TabPane = Tabs.TabPane;
 
 import { connect } from 'react-redux';
-import {selectArticleList} from '../../store/actions/article'
+import { selectArticleList } from '../../store/actions/article'
 
 @connect(
-    state => ({article:state.article.article}),
-    { selectArticleList } 
-  )
+    state => ({ article: state.article.article }),
+    { selectArticleList }
+)
 class PCBlogHeader extends React.Component {
 
     constructor() {
@@ -38,7 +38,7 @@ class PCBlogHeader extends React.Component {
             avatar: null,
             userid: null,
             token: null,
-            searchValue:''
+            searchValue: ''
         }
     }
 
@@ -56,7 +56,7 @@ class PCBlogHeader extends React.Component {
         //     return;
         // }
         this.props.selectArticleList({
-                title:this.state.searchValue
+            title: this.state.searchValue
         })
     }
 
@@ -76,7 +76,7 @@ class PCBlogHeader extends React.Component {
     }
 
     callback(key) {
-        
+
     };
 
     logout() {
@@ -98,6 +98,9 @@ class PCBlogHeader extends React.Component {
         if (e.key === 'logout') {
             this.logout();
         }
+        if(e.key === 'login') {
+            this.setModalVisible(true);
+        }
     };
 
 
@@ -107,16 +110,14 @@ class PCBlogHeader extends React.Component {
         return (
             <header class="header-line">
                 <Row>
-                    <Col span={2}></Col>
-                    <Col span={2}>
+                    <Col xs={{ span: 0 }} md={{ span: 2 }}>
                         <a href="/" class="logo">
                             <img src={LogoIcon} alt="logo" />
                             {/* <span>XbmChina</span> */}
                         </a>
                     </Col>
-                    <Col span={10}>
+                    <Col xs={{ span: 24 }} md={{ span: 12 }}>
                         <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
-
                             <Menu.Item key="home">
                                 <Link to='/'>
                                     <Icon type="home" />首页
@@ -142,25 +143,34 @@ class PCBlogHeader extends React.Component {
                                     <Icon type="user" />关于我
                                 </Link>
                             </Menu.Item>
+                            {hasLogined === true ?
+                                <SubMenu class="header-login" title={<span>{avatar === null || avatar === undefined || avatar === 'null' ? <img style={{ height: '42px' }} src={LogoIcon} alt="avatar" /> : <img style={{ height: '42px' }} src={avatar} alt="avatar" />}{username}</span>}>
+                                    <Menu.Item key="logout">退出</Menu.Item>
+                                </SubMenu>
+                                :<Menu.Item key="login" class="header-login">
+                                    <Icon type="login" />登录
+                                    {/* <Button class="header-login" type="danger" style={{ marginLeft: '18px', padding: '0 10px 0 10px' }} onClick={() => this.setModalVisible(true)}><Icon type="login" /></Button> */}
+                                </Menu.Item>
+                            }
                         </Menu>
                     </Col>
-                    <Col span={8}>
+                    <Col xs={{ span: 0, offset: 10 }} md={{ span: 8, offset: 0 }}>
                         <Row gutter={16}>
-                        <Col span={11} >
-                            <Input prefix={<Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />} onChange={this.searchChangeValue} placeholder="搜索内容" />
+                            <Col xs={{ span: 0 }} md={{ span: 11 }}>
+                                <Input prefix={<Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />} onChange={this.searchChangeValue} placeholder="搜索内容" />
                             </Col>
-                            <Col span={4}>
-                            <Button type="primary" htmlType="submit" onClick={this.searchSumbit}>搜索</Button>
+                            <Col xs={{ span: 0 }} md={{ span: 4 }}>
+                                <Button type="primary" htmlType="submit" onClick={this.searchSumbit}>搜索</Button>
                             </Col>
-                            <Col span={9}>
-                            {hasLogined === true ?
-                                <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
-                                    <SubMenu title={<span>{avatar === null || avatar === undefined || avatar === 'null' ? <img style={{ height: '42px' }} src={LogoIcon} alt="avatar" /> : <img style={{ height: '42px' }} src={avatar} alt="avatar" />}{username}</span>}>
-                                        <Menu.Item key="logout">退出</Menu.Item>
-                                    </SubMenu>
-                                </Menu>
-                                : <Button type="danger" style={{ marginLeft: '18px', padding: '0 10px 0 10px' }} onClick={() => this.setModalVisible(true)}><Icon type="login" /></Button>
-                            }
+                            <Col xs={{ span: 8 }} md={{ span: 9 }} >
+                                {hasLogined === true ?
+                                    <Menu mode="horizontal" onClick={this.handleClick.bind(this)} selectedKeys={[this.state.current]}>
+                                        <SubMenu title={<span>{avatar === null || avatar === undefined || avatar === 'null' ? <img style={{ height: '42px' }} src={LogoIcon} alt="avatar" /> : <img style={{ height: '42px' }} src={avatar} alt="avatar" />}{username}</span>}>
+                                            <Menu.Item key="logout">退出</Menu.Item>
+                                        </SubMenu>
+                                    </Menu>
+                                    : <Button type="danger" style={{ marginLeft: '18px', padding: '0 10px 0 10px' }} onClick={() => this.setModalVisible(true)}><Icon type="login" /></Button>
+                                }
                             </Col>
                         </Row>
 
@@ -176,7 +186,7 @@ class PCBlogHeader extends React.Component {
                         </Modal>
 
                     </Col>
-                    <Col span={2}>
+                    <Col xs={{ span: 0 }} md={{ span: 2 }}>
                     </Col>
                 </Row>
             </header>

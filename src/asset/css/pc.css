@@ -380,3 +380,16 @@ img {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+
+.container-card {
+  width: 240px;
+}
+
+.container-card-img {
+  height: 160px;
+}
+
+.header-login {
+  display: none !important;
+}

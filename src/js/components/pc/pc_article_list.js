@@ -111,7 +111,6 @@ export default class PCArticleList extends React.Component {
         this.setState({
             isLoading: true
         });
-        console.log("sdfsadfsdaf" + this.state);
         https.get(urls.getArticleList, {
             params: {
                 pageNum: this.state.pageNum,

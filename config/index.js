@@ -57,12 +57,12 @@ module.exports = {
     proxy: {
       '/blog': {
         target: 'http://192.168.11.138:8092/',
-        pathRewrite: {'^/blog' : ''},
+        pathRewrite: { '^/blog': '' },
         // changeOrigin: true,     // target是域名的话，需要这个参数，
         secure: false,          // 设置支持https协议的代理
       }
     }
   }
 
-  
+
 };

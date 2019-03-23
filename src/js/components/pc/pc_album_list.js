@@ -10,19 +10,19 @@ export default class PCAlbumList extends React.Component {
 		return (
 			<div class="container">
 				<Row>
-					<Col span={2}></Col>
-					<Col span={20}>
-						<Col span={16}>
+					<Col xs={{ span: 0 }} md={{ span: 2}}></Col>
+					<Col xs={{ span: 24 }} md={{ span: 20}}>
+						<Col xs={{ span: 24 }} md={{ span: 16}}>
 							<PCArticleList specialId={this.props.match.params.id}/>
 						</Col>
-						<Col span={8}>
+						<Col xs={{ span: 0 }} md={{ span: 8}}>
 							<PCArticleBlock  pageNum={0} pageSize={8} tagName="SpringBoot" width="100%" bordered="false" title="热文排行"/>
 							<PCArticleBlock  pageNum={0} pageSize={8} tagName="SpringBoot" width="100%" bordered="false" title="猜你喜欢"/>
 							<SiteBanner width="100%" bordered="false" title="本站公众号" bannerTip="专注Java和大数据的平台"/>
 							<PCArticleBlock  pageNum={0} pageSize={8} tagName="SpringBoot" width="100%" bordered="false" title="友情链接"/>
 						</Col>
 					</Col>
-					<Col span={2}></Col>
+					<Col xs={{ span: 0 }} md={{ span: 2}}></Col>
 				</Row>
 			</div>
 		);

@@ -52,8 +52,6 @@ class LoginAndRegCom extends React.Component {
                 //用户信息
                 this.setState({ username: userDat.username, userid: userDat.id, avatar: userDat.icon });
                 this.setState({ hasLogined: true });
-                console.log("loginSuccess........."+this.state)
-                console.log("loginSuccess....."+this.props.userInfo);
                 this.props.loginSuccess(this.state);
                 sessionStorage.userid = userDat.id;
                 sessionStorage.username = userDat.username;

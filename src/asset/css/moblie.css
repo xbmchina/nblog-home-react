@@ -1,0 +1,33 @@
+@media screen and (max-width: 780px) {
+  .container {
+    padding-top: 0.3rem;
+  }
+
+  .container-card {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .ant-layout-content {
+    overflow-x: hidden;
+  }
+
+  .ant-layout-header {
+    padding: 0px;
+  }
+
+  .header-login {
+    display: inline-block !important;
+  }
+
+  .aboutinfo p {
+      margin-bottom: 1rem;
+  }
+  .aboutinfo p img{
+    width: 100%;
+    display: flex;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+}
